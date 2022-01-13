@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
-//import * as actions from "../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
+import { handleLoginApi } from '../../services/userService';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'luanpc',
-            password: '123456',
-            isShowPassword: false
+            username: '',
+            password: '',
+            isShowPassword: false,
+            errMessage: ''
         }
     }
 
@@ -26,8 +27,31 @@ class Login extends Component {
             password: event.target.value
         })
     }
-    handleLogin = () => {
+    handleLogin = async () => {
+        this.setState({
+            errMessage: ''
+        })
+        try {
+            let data = await handleLoginApi(this.state.username, this.state.password);
+            console.log(data.errCode + " | " + data.message);
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if (data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user);
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        errMessage: error.response.data.message
+                    })
+                }
+            }
 
+        }
     }
 
     handleShowHidePassword = () => {
@@ -56,11 +80,13 @@ class Login extends Component {
                                     onChange={(event) => this.handleOnChangePassword(event)} />
 
                                 <span onClick={() => { this.handleShowHidePassword() }}>
-                                    <i class={this.state.isShowPassword ? 'fas fa-eye' : 'fas fa-eye-slash'}></i>
+                                    <i className={this.state.isShowPassword ? 'fas fa-eye' : 'fas fa-eye-slash'}></i>
                                 </span>
                             </div>
                         </div>
-
+                        <div className="col-12" style={{ color: 'red' }}>
+                            {this.state.errMessage}
+                        </div>
                         <div className="col-12">
                             <button className="login-btn" onClick={() => this.handleLogin()}>Log In</button>
                         </div>
@@ -72,7 +98,7 @@ class Login extends Component {
                         </div>
                         <div className="col-12 social-login">
                             <i className="fab fa-google-plus-g google"></i>
-                            <i class="fab fa-facebook-f facebook"></i>
+                            <i className="fab fa-facebook-f facebook"></i>
                         </div>
                     </div>
                 </div>
@@ -90,8 +116,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        //userLoginFail: () => dispatch(actions.userLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };
 
