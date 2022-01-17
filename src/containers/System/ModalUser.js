@@ -15,7 +15,7 @@ class ModalUser extends Component {
         }
         this.listenToEmitter();
     }
-
+    // clear texts input in modal after create
     listenToEmitter() {
         emitter.on('EVENT_CLEAR_MODAL_DATA', () => {
             this.setState({
