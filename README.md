@@ -4,6 +4,17 @@
 # install redux to store states
 # install Slider Carousel To Scroll Screen
 
+# Các chức năng chính
+1. Chi tiết chuyên khoa
+    - Thông tin chuyên khoa
+    - Hiển thị danh sách bác sĩ thuộc chuyên khoa 
+2. Chi tiết phòng khám, bệnh viện
+    - Thông tin cơ sở y tế
+    - Hiển thị danh sách các khoa & lịch khám
+3. Chi tiết bác sĩ
+    - Hiển thị thông tin, lịch khám, địa chỉ, giá,...
+4. Chi tiết cẩm nang
+
 # Những kiến thức trong project
 - Life cycle của React 
     + Run constructor
