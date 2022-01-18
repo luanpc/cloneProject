@@ -16,34 +16,36 @@ class HomeHeader extends Component {
         let language = this.props.language;
 
         return (
-            <div className='home-header-container'>
-                <div className='home-header-content'>
-                    <div className='left-content'>
-                        <i className='fas fa-bars'></i>
-                        <div className='header-logo'></div>
-                    </div>
-                    <div className='center-content'>
-                        <div className='child-content'>
-                            <div><b><FormattedMessage id="homeheader.specialty" /></b></div>
-                            <div className='sub-title'><FormattedMessage id="homeheader.searchdoctor" /></div>
+            <>
+                <div className='home-header-container'>
+                    <div className='home-header-content'>
+                        <div className='left-content'>
+                            <i className='fas fa-bars'></i>
+                            <div className='header-logo'></div>
                         </div>
-                        <div className='child-content'>
-                            <div><b><FormattedMessage id="homeheader.health-facility" /></b></div>
-                            <div className='sub-title'><FormattedMessage id="homeheader.select-room" /></div>
+                        <div className='center-content'>
+                            <div className='child-content'>
+                                <div><b><FormattedMessage id="homeheader.specialty" /></b></div>
+                                <div className='sub-title'><FormattedMessage id="homeheader.searchdoctor" /></div>
+                            </div>
+                            <div className='child-content'>
+                                <div><b><FormattedMessage id="homeheader.health-facility" /></b></div>
+                                <div className='sub-title'><FormattedMessage id="homeheader.select-room" /></div>
+                            </div>
+                            <div className='child-content'>
+                                <div><b><FormattedMessage id="homeheader.doctor" /></b></div>
+                                <div className='sub-title'><FormattedMessage id="homeheader.select-doctor" /></div>
+                            </div>
+                            <div className='child-content'>
+                                <div><b><FormattedMessage id="homeheader.fee" /></b></div>
+                                <div className='sub-title'><FormattedMessage id="homeheader.check-health" /></div>
+                            </div>
                         </div>
-                        <div className='child-content'>
-                            <div><b><FormattedMessage id="homeheader.doctor" /></b></div>
-                            <div className='sub-title'><FormattedMessage id="homeheader.select-doctor" /></div>
+                        <div className='right-content'>
+                            <div className='support'><i className='fas fa-question-circle'><FormattedMessage id="homeheader.support" /></i></div>
+                            <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.changeLanguage(LANGUAGES.VI)}>VN</span></div>
+                            <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changeLanguage(LANGUAGES.EN)}>EN</span></div>
                         </div>
-                        <div className='child-content'>
-                            <div><b><FormattedMessage id="homeheader.fee" /></b></div>
-                            <div className='sub-title'><FormattedMessage id="homeheader.check-health" /></div>
-                        </div>
-                    </div>
-                    <div className='right-content'>
-                        <div className='support'><i className='fas fa-question-circle'><FormattedMessage id="homeheader.support" /></i></div>
-                        <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.changeLanguage(LANGUAGES.VI)}>VN</span></div>
-                        <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changeLanguage(LANGUAGES.EN)}>EN</span></div>
                     </div>
                 </div>
                 <div className='home-header-banner'>
@@ -84,7 +86,7 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }
