@@ -5,15 +5,10 @@
 # install Slider Carousel To Scroll Screen
 
 # Các chức năng chính
-1. Chi tiết chuyên khoa
-    - Thông tin chuyên khoa
-    - Hiển thị danh sách bác sĩ thuộc chuyên khoa 
-2. Chi tiết phòng khám, bệnh viện
-    - Thông tin cơ sở y tế
-    - Hiển thị danh sách các khoa & lịch khám
-3. Chi tiết bác sĩ
-    - Hiển thị thông tin, lịch khám, địa chỉ, giá,...
-4. Chi tiết cẩm nang
+1. Quản lý người dùng(admin, bác sĩ)
+2. Quản lý phòng khám
+3. Quản lý chuyên khoa
+4. Quản lý bài đăng
 
 # Những kiến thức trong project
 - Life cycle của React 
@@ -36,3 +31,6 @@
     *) persistor: lưu trữ 1 biến <=> localStorage
     *) Cấu trúc hoạt động:
     Component ---(fire)---> Actions --> reducers ---(Lấy data & map vào state)--> State --> Component
+
+# Link file Excel import data
+https://docs.google.com/spreadsheets/d/175ts9y-bJGAwEUtVEFojJQ4nFCH_lIU0poA0wVjM_lk/edit#gid=0
