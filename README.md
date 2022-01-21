@@ -3,6 +3,7 @@
 # install bootstrap
 # install redux to store states
 # install Slider Carousel To Scroll Screen
+# install lightbox to preview images
 
 # Các chức năng chính
 1. Quản lý người dùng(admin, bác sĩ)
