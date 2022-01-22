@@ -4,6 +4,7 @@
 # install redux to store states
 # install Slider Carousel To Scroll Screen
 # install lightbox to preview images
+# install React-Toastify to display notification
 
 # Các chức năng chính
 1. Quản lý người dùng(admin, bác sĩ)

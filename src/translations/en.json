@@ -43,9 +43,9 @@
         "first-name": "First Name",
         "last-name": "Last Name",
         "phone-number": "Phone number",
-        "address": "Addres",
+        "address": "Address",
         "gender": "Gender",
-        "position": "Postion",
+        "position": "Position",
         "role": "Role",
         "save": "Save",
         "image": "Image"
