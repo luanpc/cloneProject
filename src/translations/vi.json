@@ -47,7 +47,8 @@
         "gender": "Giới tính",
         "position": "Chức danh",
         "role": "Vai trò",
-        "save": "Lưu",
-        "image": "Ảnh"
+        "image": "Ảnh",
+        "save": "Tạo mới",
+        "edit": "Lưu thay đổi"
     }
 }

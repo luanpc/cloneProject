@@ -47,7 +47,8 @@
         "gender": "Gender",
         "position": "Position",
         "role": "Role",
-        "save": "Save",
-        "image": "Image"
+        "save": "Create new",
+        "image": "Image",
+        "edit": "Save changes"
     }
 }
