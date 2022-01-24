@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { LANGUAGES, CRUD_ACTIONS } from '../../../utils';
+import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from '../../../utils';
 import { getAllCodeService } from '../../../services/userService';
 import * as actions from '../../../store/actions';
 import './UserRedux.scss';
@@ -96,16 +96,16 @@ class UserRedux extends Component {
             })
         }
     }
-    handleChangeImage = (event) => {
+    handleChangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
         if (file) {
+            let base64 = await CommonUtils.getBase64(file);
             const objectURL = URL.createObjectURL(file);
             this.setState({
                 previewImgURL: objectURL,
-                avatar: file
+                avatar: base64
             })
-
         }
 
     }
@@ -134,6 +134,7 @@ class UserRedux extends Component {
                 gender: this.state.gender,
                 roleId: this.state.role,
                 positionId: this.state.position,
+                avatar: this.state.avatar
             })
         }
         if (action === CRUD_ACTIONS.EDIT) {
@@ -148,7 +149,7 @@ class UserRedux extends Component {
                 gender: this.state.gender,
                 roleId: this.state.role,
                 positionId: this.state.position,
-                //avatar: this.state.avatar
+                avatar: this.state.avatar
             })
         }
 
@@ -177,6 +178,10 @@ class UserRedux extends Component {
     }
 
     handleEditUserFromParent = (user) => {
+        let imageBase64 = '';
+        if (user.image) {
+            imageBase64 = new Buffer(user.image, 'base64').toString('binary');
+        }
         this.setState({
             email: user.email,
             password: 'HARDCODE',
@@ -188,6 +193,7 @@ class UserRedux extends Component {
             role: user.roleId,
             position: user.positionId,
             avatar: '',
+            previewImgURL: imageBase64,
             action: CRUD_ACTIONS.EDIT,
             userEditId: user.id
         })
