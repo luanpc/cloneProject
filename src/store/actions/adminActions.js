@@ -1,6 +1,10 @@
 import actionTypes from './actionTypes';
 import { toast } from 'react-toastify';
-import { getAllCodeService, createNewUser, getAllUsers, editUser, deleteUser } from '../../services/userService';
+import {
+    getAllCodeService, createNewUser,
+    getAllUsers, editUser, deleteUser,
+    getTopDoctorHomeService
+} from '../../services/userService';
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
 // })
@@ -187,3 +191,26 @@ export const editUserSuccess = () => ({
 export const editUserFailed = () => ({
     type: actionTypes.UPDATE_USER_FAILED
 })
+
+//GET TOP DOCTORS
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getTopDoctorHomeService('');
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+                    data: res.data
+                })
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_FAILED
+                })
+            }
+        } catch (error) {
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTOR_FAILED
+            })
+        }
+    }
+}

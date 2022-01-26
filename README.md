@@ -5,6 +5,7 @@
 # install Slider Carousel To Scroll Screen
 # install lightbox to preview images
 # install React-Toastify to display notification
+# install mark-down to edit text
 
 # Các chức năng chính
 1. Quản lý người dùng(admin, bác sĩ)

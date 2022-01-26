@@ -12,7 +12,7 @@
         "welcome": "Welcome"
     },
     "banner": {
-        "title1": "MEDICAL BACKGROUND",
+        "title1": "MEDICAL PLATFORM",
         "title2": "COMPREHENSIVE HEALTH CARE",
         "chuyenkhoa": "Specialized examination",
         "khamtuxa": "Remote examination",
@@ -50,5 +50,9 @@
         "save": "Create new",
         "image": "Image",
         "edit": "Save changes"
+    },
+    "homepage": {
+        "outstanding-doctor": "Last week's featured doctor",
+        "more-info": "More Info"
     }
 }
