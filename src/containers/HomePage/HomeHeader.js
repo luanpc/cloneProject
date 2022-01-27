@@ -4,6 +4,7 @@ import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
+import { withRouter } from 'react-router';
 
 class HomeHeader extends Component {
     changeLanguage = (language) => {
@@ -11,17 +12,21 @@ class HomeHeader extends Component {
         this.props.changeLanguageAppRedux(language)
     }
 
+    returnToHome = () => {
+        if (this.props.history) {
+            this.props.history.push('/home')
+        }
+    }
     render() {
         //prop of redux
         let language = this.props.language;
-
         return (
             <>
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='left-content'>
                             <i className='fas fa-bars'></i>
-                            <div className='header-logo'></div>
+                            <div className='header-logo' onClick={() => this.returnToHome()}></div>
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
@@ -48,44 +53,46 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='home-header-banner'>
-                    <div className='content-up'>
-                        <div className='title1'><FormattedMessage id="banner.title1" /></div>
-                        <div className='title2'><FormattedMessage id="banner.title2" /></div>
-                        <div className='search'>
-                            <i className='fas fa-search'></i>
-                            <input type='text' placeholder='Tìm chuyên khoa' />
-                        </div>
-                    </div>
-                    <div className='content-down'>
-                        <div className='options'>
-                            <div className='option-child'>
-                                <div className='icon-chuyen-khoa'></div>
-                                <div className='text-child'><FormattedMessage id="banner.chuyenkhoa" /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-kham-tu-xa'></div>
-                                <div className='text-child'><FormattedMessage id="banner.khamtuxa" /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-tong-quat'></div>
-                                <div className='text-child'><FormattedMessage id="banner.khamtongquat" /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-y-hoc'></div>
-                                <div className='text-child'><FormattedMessage id="banner.yhoc" /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-tinh-than'></div>
-                                <div className='text-child'><FormattedMessage id="banner.tinhthan" /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-nha-khoa'></div>
-                                <div className='text-child'><FormattedMessage id="banner.nhakhoa" /></div>
+                {this.props.isShowBanner === true &&
+                    <div className='home-header-banner'>
+                        <div className='content-up'>
+                            <div className='title1'><FormattedMessage id="banner.title1" /></div>
+                            <div className='title2'><FormattedMessage id="banner.title2" /></div>
+                            <div className='search'>
+                                <i className='fas fa-search'></i>
+                                <input type='text' placeholder='Tìm chuyên khoa' />
                             </div>
                         </div>
+                        <div className='content-down'>
+                            <div className='options'>
+                                <div className='option-child'>
+                                    <div className='icon-chuyen-khoa'></div>
+                                    <div className='text-child'><FormattedMessage id="banner.chuyenkhoa" /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-kham-tu-xa'></div>
+                                    <div className='text-child'><FormattedMessage id="banner.khamtuxa" /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-tong-quat'></div>
+                                    <div className='text-child'><FormattedMessage id="banner.khamtongquat" /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-y-hoc'></div>
+                                    <div className='text-child'><FormattedMessage id="banner.yhoc" /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-tinh-than'></div>
+                                    <div className='text-child'><FormattedMessage id="banner.tinhthan" /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-nha-khoa'></div>
+                                    <div className='text-child'><FormattedMessage id="banner.nhakhoa" /></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
             </>
         );
     }
@@ -106,4 +113,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
