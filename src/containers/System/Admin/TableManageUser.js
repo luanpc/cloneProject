@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './TableManageUser.scss';
 import * as actions from '../../../store/actions';
+
 class TableManageUser extends Component {
 
     constructor(props) {
@@ -33,40 +34,42 @@ class TableManageUser extends Component {
     render() {
         let arrUsers = this.state.userRedux;
         return (
-            <table id='TableManageUser'>
-                <tr>
-                    <th>Email</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Address</th>
-                    <th>Actions</th>
-                </tr>
-                {arrUsers && arrUsers.length > 0 &&
-                    arrUsers.map((item, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{item.email}</td>
-                                <td>{item.firstName}</td>
-                                <td>{item.lastName}</td>
-                                <td>{item.address}</td>
-                                <td>
-                                    <button className='btn-edit'
-                                        onClick={() => this.handleEditUser(item)}
-                                    >
-                                        <i className='fas fa-pencil-alt'></i>
-                                    </button>
+            <>
+                <table id='TableManageUser'>
+                    <tr>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                    {arrUsers && arrUsers.length > 0 &&
+                        arrUsers.map((item, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{item.email}</td>
+                                    <td>{item.firstName}</td>
+                                    <td>{item.lastName}</td>
+                                    <td>{item.address}</td>
+                                    <td>
+                                        <button className='btn-edit'
+                                            onClick={() => this.handleEditUser(item)}
+                                        >
+                                            <i className='fas fa-pencil-alt'></i>
+                                        </button>
 
-                                    <button className='btn-delete'
-                                        onClick={() => this.handleDelete(item)}
-                                    >
-                                        <i className='fas fa-trash'></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
-            </table>
+                                        <button className='btn-delete'
+                                            onClick={() => this.handleDelete(item)}
+                                        >
+                                            <i className='fas fa-trash'></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                </table>
+            </>
         );
     }
 
