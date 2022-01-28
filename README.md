@@ -8,7 +8,7 @@
 # install mark-down to edit text
 
 # Các chức năng chính
-1. Quản lý người dùng(admin, bác sĩ)
+1. Quản lý người dùng(admin, bác sĩ- lịch khám bệnh)
 2. Quản lý phòng khám
 3. Quản lý chuyên khoa
 4. Quản lý bài đăng
@@ -34,6 +34,8 @@
     *) persistor: lưu trữ 1 biến <=> localStorage
     *) Cấu trúc hoạt động:
     Component ---(fire)---> Actions --> reducers ---(Lấy data & map vào state)--> State --> Component
+    
+- BulkCreate Sequelize( xử lý trường dữ liệu lớn): chọn nhiều Time lịch khám cùng lúc insert vào DB
 
 # Link file Excel import data
 https://docs.google.com/spreadsheets/d/175ts9y-bJGAwEUtVEFojJQ4nFCH_lIU0poA0wVjM_lk/edit#gid=0
