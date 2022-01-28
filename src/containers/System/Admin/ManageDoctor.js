@@ -9,9 +9,8 @@ import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 import './ManageDoctor.scss';
 import Select from 'react-select';
-import { LANGUAGES } from '../../../utils';
+import { LANGUAGES, CRUD_ACTIONS } from '../../../utils';
 import { getDetailInfoDoctor } from '../../../services/userService';
-import { CRUD_ACTIONS } from '../../../utils/constant';
 const mdParser = new MarkdownIt();
 
 class ManageDoctor extends Component {
