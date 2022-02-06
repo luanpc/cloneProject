@@ -11,6 +11,8 @@ import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { postPatientBookAppointment } from '../../../../services/userService';
+import moment from 'moment';
+
 class BookingModal extends Component {
 
     constructor(props) {
@@ -83,9 +85,40 @@ class BookingModal extends Component {
     handleChangeSelect = (selectedOption) => {
         this.setState({ selectedGender: selectedOption });
     }
+
+    builtTimeBooking = (dataTime) => {
+        let { language } = this.props;
+
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let time = language === LANGUAGES.VI ?
+                dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
+
+            let date = language === LANGUAGES.VI ?
+                moment.unix(dataTime.date / 1000).format('dddd - DD/MM/YYYY')
+                :
+                moment.unix(dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
+            return `${time} - ${date}`
+        }
+        return ''
+    }
+
+    builtDoctorName = (dataTime) => {
+        let { language } = this.props;
+
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let name = language === LANGUAGES.VI ?
+                `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`
+                :
+                `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName}`
+            return name;
+        }
+        return ''
+    }
+
     handleConfirmBooking = async () => {
         let date = new Date(this.state.birthday).getTime();
-
+        let timeString = this.builtTimeBooking(this.props.dataTime);
+        let doctorName = this.builtDoctorName(this.props.dataTime);
         let res = await postPatientBookAppointment({
             fullName: this.state.fullName,
             phoneNumber: this.state.phoneNumber,
@@ -95,7 +128,10 @@ class BookingModal extends Component {
             date: date,
             selectedGender: this.state.selectedGender.value,
             doctorId: this.state.doctorId,
-            timeType: this.state.timeType
+            timeType: this.state.timeType,
+            language: this.props.language,
+            timeString: timeString,
+            doctorName: doctorName
         })
         if (res && res.errCode === 0) {
             toast.success('Booking appointment success');
