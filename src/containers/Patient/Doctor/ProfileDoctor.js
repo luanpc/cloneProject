@@ -22,11 +22,9 @@ class ProfileDoctor extends Component {
         })
     }
     getInfoDoctor = async (id) => {
-        console.log(id)
         let result = {};
         if (id) {
             let res = await getProfileDoctorById(id);
-            console.log(res)
             if (res && res.errCode === 0) {
                 result = res.data
             }
