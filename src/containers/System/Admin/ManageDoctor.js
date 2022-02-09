@@ -94,6 +94,14 @@ class ManageDoctor extends Component {
                     result.push(object);
                 })
             }
+            if (type === 'CLINIC') {
+                data.map((item, index) => {
+                    let object = {};
+                    object.label = item.name
+                    object.value = item.id;
+                    result.push(object);
+                })
+            }
         }
         return result;
     }
@@ -102,17 +110,19 @@ class ManageDoctor extends Component {
             prevProps.allDoctors !== this.props.allDoctors
         ) {
             let dataSelect = this.fillDataToSelect(this.props.allDoctors, 'USERS');
-            let { resPayment, resPrice, resProvince, resSpecialty } = this.props.allRequiredDoctorInfo
+            let { resPayment, resPrice, resProvince, resSpecialty, resClinic } = this.props.allRequiredDoctorInfo
             let dataSelectPrice = this.fillDataToSelect(resPrice, 'PRICE');
             let dataSelectPayment = this.fillDataToSelect(resPayment, 'PAYMENT');
             let dataSelectProvince = this.fillDataToSelect(resProvince, 'PROVINCE');
             let dataSpecialty = this.fillDataToSelect(resSpecialty, 'SPECIALTY');
+            let dataClinic = this.fillDataToSelect(resClinic, 'CLINIC');
             this.setState({
                 allDoctors: dataSelect,
                 listPrice: dataSelectPrice,
                 listPayment: dataSelectPayment,
                 listProvince: dataSelectProvince,
-                listSpecialty: dataSpecialty
+                listSpecialty: dataSpecialty,
+                listClinic: dataClinic
             })
         }
     }
@@ -146,13 +156,13 @@ class ManageDoctor extends Component {
 
     handleChangeSelect = async (selectedDoctor) => {
         this.setState({ selectedDoctor });
-        let { listPayment, listPrice, listProvince, listSpecialty } = this.state;
+        let { listPayment, listPrice, listProvince, listSpecialty, listClinic } = this.state;
         let res = await getDetailInfoDoctor(selectedDoctor.value);
 
         if (res && res.errCode === 0 && res.data && res.data.Markdown) {
             let markdown = res.data.Markdown;
-            let addressClinic = '', nameClinic = '', note = '', paymentId = '', priceId = '', provinceId = '', specialtyId = '',
-                selectedPayment = '', selectedPrice = '', selectedProvince = '', selectedSpecialty = '';
+            let addressClinic = '', nameClinic = '', note = '', paymentId = '', priceId = '', provinceId = '', specialtyId = '', clinicId = '',
+                selectedPayment = '', selectedPrice = '', selectedProvince = '', selectedSpecialty = '', selectedClinic = '';
 
             if (res.data.Doctor_info) {
                 addressClinic = res.data.Doctor_info.addressClinic;
@@ -162,6 +172,7 @@ class ManageDoctor extends Component {
                 priceId = res.data.Doctor_info.priceId;
                 provinceId = res.data.Doctor_info.provinceId;
                 specialtyId = res.data.Doctor_info.specialtyId;
+                clinicId = res.data.Doctor_info.clinicId;
 
                 selectedPayment = listPayment.find(item => {
                     return item && item.value === paymentId
@@ -175,6 +186,9 @@ class ManageDoctor extends Component {
                 selectedSpecialty = listSpecialty.find(item => {
                     return item && item.value === specialtyId
                 })
+                selectedClinic = listClinic.find(item => {
+                    return item && item.value === clinicId
+                })
             }
             this.setState({
                 contentHTML: markdown.contentHTML,
@@ -187,7 +201,8 @@ class ManageDoctor extends Component {
                 selectedPayment: selectedPayment,
                 selectedPrice: selectedPrice,
                 selectedProvince: selectedProvince,
-                selectedSpecialty: selectedSpecialty
+                selectedSpecialty: selectedSpecialty,
+                selectedClinic: selectedClinic
             })
         }
         else {
