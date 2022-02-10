@@ -11,7 +11,7 @@ class RemedyModal extends Component {
         super(props);
         this.state = ({
             email: '',
-            imageBase64: ''
+            imgBase64: ''
         })
     }
     async componentDidMount() {
@@ -41,7 +41,7 @@ class RemedyModal extends Component {
             //encode
             let base64 = await CommonUtils.getBase64(file);
             this.setState({
-                imageBase64: base64
+                imgBase64: base64
             })
         }
 
