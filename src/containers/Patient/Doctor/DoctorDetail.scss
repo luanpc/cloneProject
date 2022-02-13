@@ -6,12 +6,14 @@
         padding: 10px 100px;
 
         .content-left {
-            width        : 20%;
-            background   : center center no-repeat;
-            width        : 120px;
-            height       : 120px;
-            border-radius: 50%;
-            margin       : 10px 20px;
+            width              : 20%;
+            background-size    : cover;
+            background-repeat  : no-repeat;
+            background-position: center;
+            width              : 120px;
+            height             : 120px;
+            border-radius      : 50%;
+            margin             : 10px 20px;
         }
 
         .content-right {
@@ -28,6 +30,10 @@
 
             .down {
                 padding-top: 10px;
+
+                .like-share-plugin {
+                    margin: 10px 0 20px 0;
+                }
             }
         }
     }
@@ -53,7 +59,9 @@
         padding         : 10px 100px;
         background-color: #f9f9f9;
 
-        h2 {
+        h1,
+        h2,
+        h3 {
             font-size  : 17px;
             font-weight: 600;
         }
@@ -61,5 +69,5 @@
 }
 
 .comment-doctor {
-    height: 100px;
+    padding: 10px 100px;
 }
