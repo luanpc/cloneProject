@@ -1,8 +1,8 @@
-Link Home: https://luan-frontend-reactjs.herokuapp.com
-Link login: https://luan-frontend-reactjs.herokuapp.com/login
-Test
-admin: username/password: (admin/admin)
-bác sĩ: username/password: (luanpc@gmail.com/123456)
+- Link Home: https://luan-frontend-reactjs.herokuapp.com
+- Link login: https://luan-frontend-reactjs.herokuapp.com/login
+- Test
+- Admin: username/password: (admin/admin)
+- Bác sĩ: username/password: (luanpc@gmail.com/123456)
 
 - install axios to request API
 - install node sass to write scss
@@ -18,30 +18,9 @@ bác sĩ: username/password: (luanpc@gmail.com/123456)
 2. Quản lý phòng khám
 3. Quản lý chuyên khoa
 4. Quản lý bài đăng
-
-# Những kiến thức trong project
-- Life cycle của React 
-    + Run constructor
-    + Mount/Unmount
-    + Render (state thay đổi -> re-render)
-
-- Fire event:
-    + Child -> Parent : dùng props
-    + Parent -> Child : dùng ref
-    + 2 phía: dùng Emitter(event) (thuộc NodeJS, k thuộc ReactJS)
-
-- Redux: Lưu trữ các state dùng cho các component # nhau, chạy song song với React
-? Tại sao k lưu xuống Local storage
-    + An toàn hơn
-    + Hiệu năng redux cao hơn
-    + Khi lưu vào redux thì tắt app thông tin biến mất
-    
-    *) reduxStore: nơi lưu trữ data
-    *) persistor: lưu trữ 1 biến <=> localStorage
-    *) Cấu trúc hoạt động:
-    Component ---(fire)---> Actions --> reducers ---(Lấy data & map vào state)--> State --> Component
     
 - BulkCreate Sequelize( xử lý trường dữ liệu lớn): chọn nhiều Time lịch khám cùng lúc insert vào DB
+
 ==========Setting libraries =========
 1. npm install --save body-parser@1.19.0 dotenv@8.2.0 ejs@3.1.5 express@4.17.1
 2.  npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10 
