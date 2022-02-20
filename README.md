@@ -14,10 +14,19 @@
 - install mark-down to edit text
 
 # Các chức năng chính
-1. Quản lý người dùng(admin, bác sĩ- lịch khám bệnh)
-2. Quản lý phòng khám
-3. Quản lý chuyên khoa
-4. Quản lý bài đăng
+Các chức năng chính:
+- Admin:
++ Quản lý người dùng
++ Quản lý bác sĩ
++ Quản lý phòng bệnh
++ Quản lý chuyên khoa
++ Quản lý kế hoạch khám bệnh
+- Bệnh nhân:
++ Đặt lịch khám bệnh
++ Xác nhận lịch qua email
+- Bác sĩ:
++ Quản lý kế hoạch khám bệnh
++ Quản lý bệnh nhân khám bệnh
     
 - BulkCreate Sequelize( xử lý trường dữ liệu lớn): chọn nhiều Time lịch khám cùng lúc insert vào DB
 
